@@ -1,22 +1,11 @@
-import os
-import sys
-from framework import app, logger
-
-# 플러그인 고유 ID 정의
-package_name = 'court_auction'
-
-# 필요한 필수 라이브러리 자동 설치 및 로드
-try:
-    from pywebpush import webpush, WebPushException
-except ImportError:
-    try:
-        os.system(f"{sys.executable} -m pip install pywebpush")
-        from pywebpush import webpush, WebPushException
-    except Exception as e:
-        logger.error(f"[{package_name}] 라이브러리 설치 실패: {str(e)}")
-
-# SJVA 핵심 설정 로드
-try:
-    from .setup import plugin_load, plugin_unload
-except ImportError:
-    pass
+id: court_auction
+name: 법원경매 태양광 알림
+category: 알림
+version: 1.0.0
+description: 경매마당의 잡종지 매물을 분석하여 태양광 발전소 관련 매물 발견 시 브라우저 푸시 알림을 보냅니다.
+developer: user
+more_info: https://github.com/soju6jan/sjva
+menu:
+  text: 법원경매 태양광
+  sub:
+    - [basic, 설정 및 목록]
